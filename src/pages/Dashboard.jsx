@@ -1,10 +1,11 @@
 import { Icon } from "@iconify/react";
-import { ShoppingCart, DollarSign, Activity, Users } from "lucide-react";
 import StatusCard from "../components/StatusCard";
+import { GrAdd } from "react-icons/gr";
+import { ProjectCard, Task } from "../components/Index";
 
 function Dashboard() {
   return (
-    <>
+    <div className=" mt-2 pl-5 h-screen w-full min-h-[948px]  opacity-100">
       <div className="mt-3 flex items-center justify-between mb-6">
         {/* Left */}
         <div className="mt-0 w-[132px] h-[35px] flex flex-col  leading-[100%] text-[rgba(109,0,255,1)] opacity-100">
@@ -42,7 +43,7 @@ function Dashboard() {
         </div>
       </div>
       {/* Space between welcome and cards */}
-      <div className="flex justify-between flex-row gap-[20px] mt-0 pt-0">
+      <div className="flex w-full justify-between flex-row gap-[20px] mt-0 pt-0">
         <StatusCard
           title="Active Project"
           icon={() => (
@@ -109,7 +110,113 @@ function Dashboard() {
           changeType="up"
         />
       </div>
-    </>
+
+      {/* Main content */}
+      <div className=" mt-8 w-full flex justify-between h-[739px] gap-[20px] opacity-100">
+        {/* LEFT COLUMN  */}
+        <div className="flex flex-col  ">
+          {/* Active Projects */}
+          <div className="w-[371px] h-[500px] flex flex-col gap-[18px] opacity-100 bg-gray shadow-[0_0_21.3px_0_rgba(0,0,0,0.1)] rounded-lg">
+            <div className="w-[351px] h-[21px] flex justify-between p-5 items-center opacity-100 ">
+              {/* Left Content */}
+              <div className="w-[121px] h-[21px] flex items-center gap-[25]">
+                <span className="font-roboto font-medium text-[18px] leading-[100%] text-black">
+                  Active projects
+                </span>
+              </div>
+
+              {/* Right Content */}
+              <div className="w-[49px] h-[12px] flex items-center gap-[1px]">
+                {/* Text */}
+                <span className="w-[38px] h-[12px] text-[10px] font-inter font-regular leading-[100%] text-[rgba(109,0,255,1)]">
+                  View All
+                </span>
+
+                {/* Arrow Icon Container */}
+                <div className="w-[10px] h-[10px] relative  border-[rgba(109,0,255,1)] flex items-center justify-center">
+                  <Icon
+                    icon="solar:arrow-right-linear"
+                    className="absolute top-[1px] left-[1.67px] w-[10px] h-[7px]"
+                  />
+                </div>
+              </div>
+            </div>
+            {/* PROJECT CARDS */}
+            <div className="flex flex-col gap-[10px] px-5">
+              <ProjectCard
+                priority="High"
+                title="Project Orion – Website Redesign"
+                description="Revamping client’s corporate site with a modern UI/UX."
+                progress={53}
+                comments={4}
+                date="Sep 15, 2025"
+              />
+
+              <ProjectCard
+                priority="Medium"
+                title="Nova CRM – Mobile App"
+                description="Building cross-platform CRM app for sales teams."
+                progress={40}
+                comments={2}
+                date="Oct 5, 2025"
+                hideFooter={false}
+              />
+
+              <ProjectCard
+                priority="High"
+                title="Aero Analytics Dashboard"
+                description="Data analytics dashboard for aviation insights."
+                progress={75}
+                date="Aug 30, 2025"
+                hideFooter={true}
+              />
+            </div>
+          </div>
+
+          <div className="mt-15 w-[371px] h-[244px] box-border overflow-y-hidden rounded-[10px] p-[10px] bg-white shadow-[0_0_21.4px_0_rgba(0,0,0,0.1)] opacity-100 flex flex-col gap-[10px]">
+            {/* Inner Div */}
+            <div className="w-[351px] h-[220px] opacity-100 flex flex-col gap-[25px]">
+              {/* Top Div */}
+              <div className="w-full flex justify-between items-center h-[24px] ">
+                {/* Left Side Text */}
+                <span className="text-[18px] font-roboto font-medium text-black leading-[100%]">
+                  To do list
+                </span>
+
+                {/* Right Side Icon Container */}
+                <div className="w-[24px] h-[24px] rounded-[5px] bg-[#EFEFEF] flex items-center justify-center">
+                  <GrAdd className="w-[13px] h-[13px] text-[rgba(109,0,255,1)]" />
+                </div>
+              </div>
+
+              {/* Bottom Div */}
+              <div className="w-full flex flex-col gap-[15px] h-[193px]">
+                <Task
+                  taskName="Finish Dashboard"
+                  dueDate="2026-01-25"
+                  completedOn=""
+                  onAdd={() => console.log("Add clicked")}
+                  onEdit={() => console.log("Edit clicked")}
+                />
+                <Task
+                  taskName="Write Documentation"
+                  dueDate="2026-01-28"
+                  completedOn="2026-01-20"
+                  onAdd={() => console.log("Add clicked")}
+                  onEdit={() => console.log("Edit clicked")}
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* CENTER COLUMN */}
+        <div className="w-[371px] h-[739px] bg-gray-100"></div>
+
+        {/* RIGHT COLUMN */}
+        <div className="w-[371px] h-[739px] bg-gray-100"></div>
+      </div>
+    </div>
   );
 }
 

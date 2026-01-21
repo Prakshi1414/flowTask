@@ -3,13 +3,13 @@ import { Icon } from "@iconify/react";
 
 const Header = () => {
   return (
-    <header className="w-full mt-[34px] h-20 flex items-center justify-start px-6 bg-white ">
+    <header className="w-full  mt-[34px] h-20 flex items-center justify-start px-6 bg-white ">
       {/* Left section: Logo + Search */}
-      <div className=" w-full flex  gap-[95px]">
+      <div className=" w-full flex  gap-[95px] ml-[32px]">
         <img
           src="/images/Flowtask.png"
           alt="Flowtask Logo"
-          className="w-[132px] h-[26px] mt-2 object-contain"
+          className="w-[132px] h-[26px] mt-2 object-contain "
         />
 
         <div className="flex items-center gap-[10px] w-[775px] h-[45px] rounded-[5px] bg-white border border-gray-200 px-[30px] py-[5px] shadow-[0_0_21.3px_0_rgba(0,0,0,0.1)]">

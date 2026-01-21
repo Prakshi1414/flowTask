@@ -1,6 +1,7 @@
 import { ArrowDown, ArrowUp } from "lucide-react";
 import { Icon } from "@iconify/react";
-// lucide icons
+import { SlArrowDown, SlArrowUp } from "react-icons/sl";
+import {  GoArrowUpRight } from "react-icons/go";
 
 const StatusCard = ({
   title,
@@ -11,7 +12,7 @@ const StatusCard = ({
   bottomLabel,
 }) => {
   return (
-    <div className="w-[214px] h-[98px] bg-white shadow-[0_0_21.3px_0_rgba(0,0,0,0.1)] rounded-lg opacity-100 flex flex-col justify-between">
+    <div className="w-full max-w-[214px] h-[98px] bg-white shadow-[0_0_21.3px_0_rgba(0,0,0,0.1)] rounded-lg opacity-100 flex flex-col justify-between">
       {/* Top Content */}
       <div className="w-[214px] h-[63px] bg-[rgba(255,255,255,1)] opacity-100 flex flex-col gap-[10px] p-2.5 rounded-t-lg">
         <div className="w-[194px] h-[43px]  gap-[4px] opacity-100">
@@ -35,18 +36,17 @@ const StatusCard = ({
             {bottomLabel}
           </span>
 
-          {/* Simple  arrow */}
-          <span className="text-[rgba(97, 97, 97, 1)] font-bold text-[12px]">
-            ^
-          </span>
+          {/* Arrow icon from react-icons (sl) */}
+          <SlArrowDown className="text-[rgba(97,97,97,1)] text-[11px] font-bold" />
         </div>
 
         {/* Right side: change */}
         <span
-          className={`text-xs font-semibold ${
+          className={`flex items-center gap-1 text-xs font-semibold ${
             changeType === "down" ? "text-red-500" : "text-green-500"
           }`}
         >
+          <GoArrowUpRight className="text-[14px]" />
           {change}
         </span>
       </div>
