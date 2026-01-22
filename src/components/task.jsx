@@ -1,32 +1,28 @@
-// Task.jsx
-import React from "react";
-import { GrAdd } from "react-icons/gr";
+import { LuCalendarDays } from "react-icons/lu"; // Calendar icon
 import { Edit } from "lucide-react";
-import { Calendar } from "lucide-react";
 
-const Task = ({ taskName,  onAdd, onEdit }) => {
+const Task = ({ taskName, date, status = "due" }) => {
   return (
     <div className="flex w-[351px] flex-col gap-[2px] opacity-100 px-2">
       {/* Top row: GrAdd + Task name left, Edit right */}
-      <div className="flex items-center justify-between w-full h-[37px]">
-        <div className="flex items-center gap-[5px]">
-          <GrAdd
-            size={13}
-            className="text-black cursor-pointer"
-            onClick={onAdd}
-          />
-          <h3 className="text-gray-800 font-medium">{taskName}</h3>
+      {/* First Row */}
+      <div className="flex items-center justify-between">
+        <div className="flex items-center gap-2">
+          <span className="w-[309px] h-[16px] font-roboto font-normal text-[14px] leading-[100%] tracking-[0%] text-black opacity-100">
+            {taskName}
+          </span>
         </div>
-
-        <Edit
-          size={12}
-          className="text-gray-500 cursor-pointer border border-[rgba(97,97,97,1)]"
-          onClick={onEdit}
-        />
+        <div className="w-[20px] h-[20px] gap-[10px] opacity-100">
+          <Edit className="w-[12x] h-[12px] relative top-[1px] left-[1.5px]  border-[rgba(97,97,97,1)] opacity-100" />
+        </div>
       </div>
 
-      <div className="flex items-center gap-[2px] mt-[2px] h-[16px]">
-
+      {/* Second Row */}
+      <div className="flex items-center gap-2 text-xs text-gray-500">
+        <LuCalendarDays />
+        <span>
+          {status === "completed" ? `Completed : ${date}` : `Due : ${date}`}
+        </span>
       </div>
     </div>
   );

@@ -1,7 +1,8 @@
 import { Icon } from "@iconify/react";
 import StatusCard from "../components/StatusCard";
 import { GrAdd } from "react-icons/gr";
-import { ProjectCard, Task } from "../components/Index";
+import { ProjectCard, Task, RightPart } from "../components/Index";
+import { CenterPart } from "../components/Index";
 
 function Dashboard() {
   return (
@@ -112,7 +113,7 @@ function Dashboard() {
       </div>
 
       {/* Main content */}
-      <div className=" mt-8 w-full flex justify-between h-[739px] gap-[20px] opacity-100">
+      <div className=" mt-8 w-full flex justify-between h-[752px] gap-[20px] opacity-100">
         {/* LEFT COLUMN  */}
         <div className="flex flex-col  ">
           {/* Active Projects */}
@@ -192,18 +193,18 @@ function Dashboard() {
               {/* Bottom Div */}
               <div className="w-full flex flex-col gap-[15px] h-[193px]">
                 <Task
-                  taskName="Finish Dashboard"
-                  dueDate="2026-01-25"
-                  completedOn=""
-                  onAdd={() => console.log("Add clicked")}
-                  onEdit={() => console.log("Edit clicked")}
+                  taskName="Review client feedback on Homepage Wireframe"
+                  date="Aug 23"
                 />
                 <Task
-                  taskName="Write Documentation"
-                  dueDate="2026-01-28"
-                  completedOn="2026-01-20"
-                  onAdd={() => console.log("Add clicked")}
-                  onEdit={() => console.log("Edit clicked")}
+                  taskName="Complete UI Design"
+                  date="Aug 23"
+                  status="due"
+                />
+                <Task
+                  taskName="Complete UI Design"
+                  date="Aug 21"
+                  status="complited"
                 />
               </div>
             </div>
@@ -211,10 +212,10 @@ function Dashboard() {
         </div>
 
         {/* CENTER COLUMN */}
-        <div className="w-[371px] h-[739px] bg-gray-100"></div>
+        <CenterPart />
 
         {/* RIGHT COLUMN */}
-        <div className="w-[371px] h-[739px] bg-gray-100"></div>
+        <RightPart />
       </div>
     </div>
   );
