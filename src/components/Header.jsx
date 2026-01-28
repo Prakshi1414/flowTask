@@ -1,9 +1,11 @@
-import { Search, Bell } from "lucide-react";
+import { Search } from "lucide-react";
 import { Icon } from "@iconify/react";
 
-const Header = () => {
+const Header = ({ showProfilePopup, setShowProfilePopup }) => {
+
+
   return (
-    <header className="w-full  mt-[34px] h-20 flex items-center justify-start px-6 bg-white ">
+    <header className="w-full max-w-[1450px] mt-[34px] h-20 flex items-center justify-start px-7 bg-white ">
       {/* Left section: Logo + Search */}
       <div className=" w-full flex  gap-[95px] ml-[32px]">
         <img
@@ -39,17 +41,18 @@ const Header = () => {
         </div>
 
         <div className="flex items-center gap-[10px] w-[65px] h-[45px] opacity-100 cursor-pointer">
-          <div className="w-[45px] h-[45px] rounded-[5px] overflow-hidden opacity-100">
+          <div className="w-[45px] h-[45px] rounded-[5px] overflow-hidden opacity-100"   onClick={() => setShowProfilePopup(!showProfilePopup)}>
             <img
               src="/images/userimg.png"
               alt="profile"
               className="w-full h-full object-cover"
+              
             />
           </div>
 
           <Icon
             icon="weui:arrow-outlined"
-            className="absolute top-7 right-7 w-[10px] h-[20px] rotate-90 opacity-100"
+            className="right-6 w-[10px] h-[20px] rotate-90 opacity-100"
           />
         </div>
       </div>

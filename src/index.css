@@ -1,1 +1,43 @@
 @import "tailwindcss";
+
+/* Hide scrollbar but keep scrolling */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none;  /* IE & Edge */
+  scrollbar-width: none;     /* Firefox */
+}
+
+@keyframes slideInRight {
+  from { transform: translateX(100%); }
+  to   { transform: translateX(0); }
+}
+
+@keyframes slideOutRight {
+  from { transform: translateX(0); }
+  to   { transform: translateX(100%); }
+}
+
+.animate-slideInRight {
+  animation: slideInRight 0.3s ease forwards;
+}
+
+.animate-slideOutRight {
+  animation: slideOutRight 0.3s ease forwards;
+}
+
+/* ---------- JUMP ANIMATION ---------- */
+
+@keyframes jump {
+  0%   { transform: translateY(0); }
+  30%  { transform: translateY(-12px); }
+  50%  { transform: translateY(0); }
+  70%  { transform: translateY(-6px); }
+  100% { transform: translateY(0); }
+}
+
+.animate-jump {
+  animation: jump 0.6s ease;
+}

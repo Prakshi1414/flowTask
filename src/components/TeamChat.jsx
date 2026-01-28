@@ -53,10 +53,10 @@ const TeamChat = () => {
         </div>
 
         {/* bottom List */}
-        <div class="w-[351px] h-[207px] flex flex-col gap-[18px] opacity-100">
+        <div className="w-[351px] h-[207px] flex flex-col gap-[18px] opacity-100">
           {chats.map((chat) => (
             <div key={chat.id}>
-              <div class="w-[351px] h-[38.667px] flex gap-[5px] px-[5px] bg-white border-b-[0.3px] border-b-[rgba(222,222,222,1)]">
+              <div className="w-[351px] h-[38.667px] flex gap-[5px] px-[5px] bg-white border-b-[0.3px] border-b-[rgba(222,222,222,1)]">
                 {/* Avatar */}
                 <img
                   src={chat.avatar}

@@ -23,9 +23,13 @@ const ProjectCard = ({
   comments = 0,
   status = "Active",
   hideFooter = false,
+  onClick,
 }) => {
   return (
-    <div className="w-full max-w-[351px] h-[158px] flex flex-col gap-[10px] p-[10px] rounded-[10px] bg-white shadow-[0_0_21.3px_0_rgba(0,0,0,0.1)]">
+    <div
+      onClick={onClick}
+      className="w-full max-w-[351px] h-[158px] flex flex-col gap-[10px] p-[10px] rounded-[10px] bg-white shadow-[0_0_21.3px_0_rgba(0,0,0,0.1)]"
+    >
       <div className="w-full h-[138px] flex flex-col gap-[2px]">
         {/* Top Row */}
         <div className="w-[331px] h-[22px] flex items-center justify-between p-1">

@@ -1,108 +1,41 @@
-  {/* Main content */}
-      <div className=" mt-8 w-full flex justify-between h-[739px] gap-[20px] opacity-100">
-        {/* LEFT COLUMN */}
-        <div className="w-[371px] h-[739px] flex flex-col gap-[18px] opacity-100">
-          {/* Active Projects */}
-          <div className="w-[351px] h-[21px] flex justify-between items-center opacity-100">
-            {/* Left Content */}
-            <div className="w-[121px] h-[21px] flex items-center">
-              <span className="font-roboto font-medium text-[18px] leading-[100%] text-black">
-                Active projects
-              </span>
-            </div>
+<DetailPage
+  project={selectedProject}
+  onBack={() => setSelectedProject(null)}
+  isExpanded={isExpanded}
+  setIsExpanded={setIsExpanded}
+/>
 
-            {/* Right Content */}
-            <div className="w-[49px] h-[12px] flex items-center gap-[1px]">
-              {/* Text */}
-              <span className="w-[38px] h-[12px] text-[10px] font-inter font-normal leading-[100%] text-[rgba(109,0,255,1)]">
-                View All
-              </span>
 
-              {/* Arrow Icon Container */}
-              <div className="w-[10px] h-[10px] relative rotate-[-90deg] border border-[rgba(109,0,255,1)] flex items-center justify-center">
-                <Icon
-                  icon="solar:arrow-up-linear"
-                  className="absolute top-[2.5px] left-[1.67px] w-[5px] h-[6.6667px]"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* CENTER COLUMN */}
-        <div className="w-[371px] h-[739px] bg-gray-100"></div>
-
-        {/* RIGHT COLUMN */}
-        <div className="w-[371px] h-[739px] bg-gray-100"></div>
-      </div>
+function DetailPage({ project, onBack, isExpanded, setIsExpanded }) {
+  return (
+    <div className="w-full flex max-w-[1112px] h-[946px] pt-[25px] pr-[19px] pb-[25px] pl-[19px] gap-[20px] rounded-[10px] bg-white">
+      <Leftsaid
+        isExpanded={isExpanded}
+        setIsExpanded={setIsExpanded}
+      />
+      <Rightsaid />
     </div>
+  );
+}
 
-    ======
-           {/* Bottom Row */}
-          <div className="w-full h-[21px] flex justify-between ">
-            {/* Left */}
-            <div className=" flex gap-[20px]">
-              {/* img */}
-              <div className="w-[50px] h-[21px] relative">
-                {members.map((img, index) => (
-                  <img
-                    key={index}
-                    src={`/images/${img}`}
-                    alt="member"
-                    className="w-[21px] h-[21px] rounded-full object-cover absolute top-0"
-                    style={{ left: `${index * 12}px` }} // ← dynamic left via inline style
-                  />
-                ))}
-              </div>
+function Leftsaid({ isExpanded, setIsExpanded }) {
+  return (
+    <div className="w-[634px] h-[896px] pr-[10px] pl-[10px] pt-[20px] pb-[20px] gap-[40px] border-r">
 
-              {/* Comments */}
-              <div className="flex items-center gap-2">
-                {/* Chat Icon Container */}
-                <div className="w-[20px] h-[20px] relative">
-                  {/* Inner Chat Icon */}
-                  <BiChat className="absolute top-[2.97px] left-[2.5px] w-[15px] h-[14.06px] text-[rgba(0,119,255,1)]" />
+      {/* Expand / Collapse Button */}
+      <div className="flex justify-end mb-3">
+        <button
+          onClick={() => setIsExpanded(!isExpanded)}
+          className="px-3 py-1 bg-gray-200 rounded text-sm"
+        >
+          {isExpanded ? "Collapse" : "Expand"}
+        </button>
+      </div>
 
-                  {/* Notification Badge */}
-                  <div className="absolute -top-[5px] -right-[5px] w-[10px] h-[10px] bg-[#EAD2FF] rounded-full flex items-center justify-center">
-                    <span className="text-[8px] leading-[100%] font-roboto font-normal text-black text-center">
-                      {comments}
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
+      Left Said
+    </div>
+  );
+}
 
-            {/* Status */}
-            <div className="w-[54px] h-[18px] flex items-center gap-[2px] opacity-100">
-              {/* Line Chart Icon */}
-              <div className="w-[18px] h-[18px] relative flex items-center justify-center">
-                <Icon
-                  icon="mynaui:line-chart-circle-solid"
-                  className="w-[14.625px] h-[14.625px] text-[rgba(0,119,255,1)]"
-                />
-              </div>
-
-              {/* Status Text */}
-              <div className="w-[34px] h-[14px] flex items-center justify-center">
-                <span className="text-[12px] font-roboto font-normal leading-[100%] text-[rgba(0,119,255,1)] text-center">
-                  {status}
-                </span>
-              </div>
-            </div>
-          </div>
-
-          =============
-          <MeetingCard
-  title="Meeting with product manager"
-  description="Design system update & development regarding"
-  time="10:00 am - 10:30 am"
-  isOngoing={true}
-/>
-
-===========================
-<NotificationCard
-  name="Krish roy"
-  role="Product manager"
-  message="I've uploaded the required documents for the next sprint. Please confirm once received."
-/>
+export default Leftsaid;
 

@@ -1,13 +1,35 @@
 import { Icon } from "@iconify/react";
-import StatusCard from "../components/StatusCard";
+import { useState } from "react";
 import { GrAdd } from "react-icons/gr";
-import { ProjectCard, Task, RightPart } from "../components/Index";
-import { CenterPart } from "../components/Index";
+import {
+  ProjectCard,
+  Task,
+  RightPart,
+  CenterPart,
+  StatusCard,
+  DetailPage,
+} from "../components/Index";
 
 function Dashboard() {
+  const [selectedProject, setSelectedProject] = useState(null);
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  //animation state
+  const [isClosing, setIsClosing] = useState(false);
+
+  const closePanel = () => {
+    setIsClosing(true);
+
+    setTimeout(() => {
+      setSelectedProject(null);
+      setIsClosing(false);
+      setIsExpanded(false);
+    }, 300); // animation duration ke barabar
+  };
+
   return (
-    <div className=" mt-2 pl-5 h-screen w-full min-h-[948px]  opacity-100">
-      <div className="mt-3 flex items-center justify-between mb-6">
+    <div className=" mt-2 pl-5 max-w-[1440] max-h-[1080px] justify-center iteam-center flex-wrap  opacity-100">
+      <div className="mt-3 w-full max-w-[1149px] min-h-[35px]  flex items-center justify-between mb-6">
         {/* Left */}
         <div className="mt-0 w-[132px] h-[35px] flex flex-col  leading-[100%] text-[rgba(109,0,255,1)] opacity-100">
           <h2 className="p-0 h-[19px] font-roboto font-medium text-[16px] ">
@@ -44,7 +66,7 @@ function Dashboard() {
         </div>
       </div>
       {/* Space between welcome and cards */}
-      <div className="flex w-full justify-between flex-row gap-[20px] mt-0 pt-0">
+      <div className="flex w-full max-w-[1149px] justify-between flex-row gap-[20px] mt-0 pt-0">
         <StatusCard
           title="Active Project"
           icon={() => (
@@ -113,11 +135,11 @@ function Dashboard() {
       </div>
 
       {/* Main content */}
-      <div className=" mt-8 w-full flex justify-between h-[752px] gap-[20px] opacity-100">
+      <div className=" mt-8 w-full max-w-[1149px]  flex justify-between iteam-center max-h-[739px] gap-[20px] opacity-100">
         {/* LEFT COLUMN  */}
-        <div className="flex flex-col  ">
+        <div className="flex flex-col h-[739px] ">
           {/* Active Projects */}
-          <div className="w-[371px] h-[500px] flex flex-col gap-[18px] opacity-100 bg-gray shadow-[0_0_21.3px_0_rgba(0,0,0,0.1)] rounded-lg">
+          <div className="w-[371px] h-[500px] flex flex-col opacity-100 bg-gray shadow-[0_0_21.3px_0_rgba(0,0,0,0.1)] rounded-lg">
             <div className="w-[351px] h-[21px] flex justify-between p-5 items-center opacity-100 ">
               {/* Left Content */}
               <div className="w-[121px] h-[21px] flex items-center gap-[25]">
@@ -143,7 +165,7 @@ function Dashboard() {
               </div>
             </div>
             {/* PROJECT CARDS */}
-            <div className="flex flex-col gap-[10px] px-5">
+            <div className="flex flex-col gap-[10px] px-5 overflow-y-auto hide-scrollbar flex-1">
               <ProjectCard
                 priority="High"
                 title="Project Orion – Website Redesign"
@@ -151,8 +173,18 @@ function Dashboard() {
                 progress={53}
                 comments={4}
                 date="Sep 15, 2025"
+                onClick={() =>
+                  setSelectedProject({
+                    priority: "High",
+                    title: "Project Orion – Website Redesign",
+                    description:
+                      "Revamping client’s corporate site with a modern UI/UX.",
+                    progress: 53,
+                    comments: 4,
+                    date: "Sep 15, 2025",
+                  })
+                }
               />
-
               <ProjectCard
                 priority="Medium"
                 title="Nova CRM – Mobile App"
@@ -161,8 +193,7 @@ function Dashboard() {
                 comments={2}
                 date="Oct 5, 2025"
                 hideFooter={false}
-              />
-
+              />{" "}
               <ProjectCard
                 priority="High"
                 title="Aero Analytics Dashboard"
@@ -170,11 +201,11 @@ function Dashboard() {
                 progress={75}
                 date="Aug 30, 2025"
                 hideFooter={true}
-              />
-            </div>
+              />{" "}
+            </div>{" "}
           </div>
 
-          <div className="mt-15 w-[371px] h-[244px] box-border overflow-y-hidden rounded-[10px] p-[10px] bg-white shadow-[0_0_21.4px_0_rgba(0,0,0,0.1)] opacity-100 flex flex-col gap-[10px]">
+          <div className="mt-5 w-[371px] h-[244px] box-border rounded-[10px] p-[10px] bg-white shadow-[0_0_21.4px_0_rgba(0,0,0,0.1)] opacity-100 flex flex-col gap-[10px]">
             {/* Inner Div */}
             <div className="w-[351px] h-[220px] opacity-100 flex flex-col gap-[25px]">
               {/* Top Div */}
@@ -191,7 +222,7 @@ function Dashboard() {
               </div>
 
               {/* Bottom Div */}
-              <div className="w-full flex flex-col gap-[15px] h-[193px]">
+              <div className="w-full flex flex-col gap-[15px] h-[193px] hide-scrollbar overflow-y-auto flex-1 pr-1">
                 <Task
                   taskName="Review client feedback on Homepage Wireframe"
                   date="Aug 23"
@@ -200,6 +231,11 @@ function Dashboard() {
                   taskName="Complete UI Design"
                   date="Aug 23"
                   status="due"
+                />
+                <Task
+                  taskName="Complete UI Design"
+                  date="Aug 21"
+                  status="complited"
                 />
                 <Task
                   taskName="Complete UI Design"
@@ -217,6 +253,38 @@ function Dashboard() {
         {/* RIGHT COLUMN */}
         <RightPart />
       </div>
+
+      {/* FULL PAGE RIGHT SLIDE DETAIL VIEW */}
+      {selectedProject && (
+        <div className="fixed inset-0 z-50 flex justify-end animation-jump">
+          {/* Overlay */}
+          <div className="absolute inset-0 " onClick={closePanel}></div>
+
+          {/* Slide-in panel */}
+          <div
+            className={`relative h-full bg-white shadow-lg overflow-y-auto
+            ${isClosing ? "animate-slideOutRight" : "animate-slideInRight"}
+            ${isExpanded ? "w-full" : "w-[75%]"}  // half+ width
+              `}
+          >
+            {/* Expand/Collapse Button */}
+            <div className="flex justify-end p-4">
+              <button
+                className="px-3 py-1 bg-gray-200 rounded"
+                onClick={() => setIsExpanded(!isExpanded)}
+              >
+                {isExpanded ? "Collapse" : "Expand"}
+              </button>
+            </div>
+
+            {/* Content */}
+            <DetailPage
+              project={selectedProject}
+              onBack={() => setSelectedProject(null)}
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 }

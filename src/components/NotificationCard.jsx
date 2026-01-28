@@ -2,7 +2,7 @@ import { Icon } from "@iconify/react";
 
 const NotificationCard = ({ name, role, message }) => {
   return (
-    <div className="w-[351px] h-[95px] p-[5px] rounded-[10px] border-[0.5px] border-[rgba(217,217,217,1)] shadow-[0_0_21.3px_0_rgba(0,0,0,0.1)] opacity-100">
+    <div className="w-[351px] h-[95px] p-[5px] rounded-[10px] border-[0.5px] border-[rgba(217,217,217,1)] opacity-100">
       <div className="w-[341px] h-[85px] flex flex-col gap-[3px] opacity-100">
         {/* Header */}
         <div className="w-[341px] h-[32px] flex flex-col gap-[2px]">
