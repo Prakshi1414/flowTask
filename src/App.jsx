@@ -18,7 +18,7 @@ function App() {
         {/* Popup exactly below header */}
         {showProfilePopup && (
           <div
-            className="fixed inset-0 z-50 flex justify-center iteam-center bg-black/10"
+            className="fixed inset-0 z-50 flex iteam-end justify-end bg-black/10"
             onClick={() => setShowProfilePopup(false)}
           >
             {/* Popup container */}
@@ -34,7 +34,7 @@ function App() {
         <div className="flex flex-1 ">
           <Sidebar />
 
-          <div className="flex-1 p-6 justify-center iteam-center ">
+          <div className="flex-1 p-6 justify-center items-center ">
             <Routes>
               <Route path="/" element={<Dashboard />} />
             </Routes>

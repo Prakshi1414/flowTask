@@ -39,3 +39,4 @@ function Leftsaid({ isExpanded, setIsExpanded }) {
 
 export default Leftsaid;
 
+

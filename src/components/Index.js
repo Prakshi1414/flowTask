@@ -21,6 +21,8 @@ import Rightsaid from "./detailpage/Rightsaid/Rightsaid";
 import DetailPage from "./detailpage/DetailPage";
 import FileIteam from "./FileIteam";
 import Btn from "./Btn"
+import Objective from "./Objective";
+import ProgressBar from "./ProgressBar";
 
 export {
   Header,
@@ -45,6 +47,8 @@ export {
   Rightsaid,
   DetailPage,
   FileIteam,
-  Btn
+  Btn,
+  Objective,
+  ProgressBar
 
 };

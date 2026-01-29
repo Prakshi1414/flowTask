@@ -11,12 +11,16 @@ import {
 } from "../components/Index";
 
 function Dashboard() {
+  // Track selected project for panel display
   const [selectedProject, setSelectedProject] = useState(null);
+
+  // Control if panel is fully expanded
   const [isExpanded, setIsExpanded] = useState(false);
 
-  //animation state
+  // Manage closing animation state
   const [isClosing, setIsClosing] = useState(false);
 
+  // Animate and close panel after delay
   const closePanel = () => {
     setIsClosing(true);
 
@@ -28,7 +32,7 @@ function Dashboard() {
   };
 
   return (
-    <div className=" mt-2 pl-5 max-w-[1440] max-h-[1080px] justify-center iteam-center flex-wrap  opacity-100">
+    <div className=" mt-2 pl-5 max-w-[1440] max-h-[1080px] flex-wrap  opacity-100">
       <div className="mt-3 w-full max-w-[1149px] min-h-[35px]  flex items-center justify-between mb-6">
         {/* Left */}
         <div className="mt-0 w-[132px] h-[35px] flex flex-col  leading-[100%] text-[rgba(109,0,255,1)] opacity-100">
@@ -36,7 +40,7 @@ function Dashboard() {
             Hey 👋🏻
           </h2>
           <p className=" h-[15px] font-inter font-normal text-[12px]">
-            Welcome back
+            Welcome back , Sandip
           </p>
         </div>
 
@@ -253,34 +257,26 @@ function Dashboard() {
         {/* RIGHT COLUMN */}
         <RightPart />
       </div>
-
-      {/* FULL PAGE RIGHT SLIDE DETAIL VIEW */}
       {selectedProject && (
-        <div className="fixed inset-0 z-50 flex justify-end animation-jump">
-          {/* Overlay */}
-          <div className="absolute inset-0 " onClick={closePanel}></div>
-
-          {/* Slide-in panel */}
+        <div className="fixed inset-0 z-50 flex justify-end">
+          {/* Semi-transparent overlay, click closes panel */}
           <div
-            className={`relative h-full bg-white shadow-lg overflow-y-auto
-            ${isClosing ? "animate-slideOutRight" : "animate-slideInRight"}
-            ${isExpanded ? "w-full" : "w-[75%]"}  // half+ width
-              `}
-          >
-            {/* Expand/Collapse Button */}
-            <div className="flex justify-end p-4">
-              <button
-                className="px-3 py-1 bg-gray-200 rounded"
-                onClick={() => setIsExpanded(!isExpanded)}
-              >
-                {isExpanded ? "Collapse" : "Expand"}
-              </button>
-            </div>
+            className="absolute inset-0 bg-black/20 z-40"
+            onClick={closePanel}
+          ></div>
 
-            {/* Content */}
+          {/* Slide-in panel with animation and responsive width */}
+          <div
+            className={`relative z-50 h-full bg-white shadow-lg overflow-y-auto  transition-all duration-300
+            ${isClosing ? "animate-slideOutRight" : "animate-slideInRight"}
+            ${isExpanded ? "w-full" : "w-[75%]"}`}
+          >
+              {/* Panel content */}
             <DetailPage
               project={selectedProject}
-              onBack={() => setSelectedProject(null)}
+              onBack={closePanel}
+              isExpanded={isExpanded}
+              setIsExpanded={setIsExpanded}
             />
           </div>
         </div>

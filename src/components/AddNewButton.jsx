@@ -1,18 +1,36 @@
-import React from "react";
+import { Plus } from "lucide-react";
 
-export default function AddNewButton({ text = "Add New", onClick }) {
+export default function AddNewButton({
+  text = "Add New",
+  onClick,
+  btnClass = "",
+  iconWrapClass = "",
+  iconClass = "",
+  textClass = "",
+}) {
   return (
     <button
       onClick={onClick}
-      className="w-full max-w-[520px] h-[90px] bg-white border border-gray-300 rounded-2xl flex items-center gap-6 px-6 hover:shadow-md transition"
+      className={`
+        inline-flex items-center 
+        bg-white border border-gray-300
+        rounded-2xl hover:shadow-md transition
+        ${btnClass}
+      `}
     >
       {/* Circle + Icon */}
-      <div className="w-14 h-14 rounded-full border-2 border-black flex items-center justify-center">
-        <span className="text-3xl font-medium leading-none">+</span>
+      <div
+        className={`
+          flex items-center justify-center
+          rounded-full border border-black
+          ${iconWrapClass}
+        `}
+      >
+        <Plus className={`${iconClass}`} />
       </div>
 
       {/* Text */}
-      <span className="text-3xl font-semibold text-black">{text}</span>
+      <span className={`${textClass}`}>{text}</span>
     </button>
   );
 }
