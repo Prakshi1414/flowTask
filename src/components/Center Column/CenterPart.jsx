@@ -1,6 +1,8 @@
 import { Icon } from "@iconify/react";
 import { MeetingCard, OverdueCard, PendingMeetingCard } from "../Index";
 
+
+
 function CenterPart() {
   return (
     <div className="w-[371px] h-[739px] flex flex-col gap-[14px] opacity-100">
@@ -9,7 +11,7 @@ function CenterPart() {
         {/* top content here */}
         <div className="w-[351px] h-[565px] flex flex-col gap-[25px]">
           <div className="h-[21px] flex justify-between items-center ">
-            <div className="w-[140px] h-[21px] text-[18px] font-medium font-roboto text-center text-black  flex items-center justify-center">
+            <div className="w-[140px] h-[21px] text-[18px] font-medium font-roboto text-2xl  text-center text-black  flex items-center justify-center">
               Today’s meetings
             </div>
 

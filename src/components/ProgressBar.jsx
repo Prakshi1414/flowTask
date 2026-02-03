@@ -9,7 +9,7 @@ function ProgressBar({ value = 10 }) {
   }, [value]);
 
   return (
-    <div className="w-[614px] h-[60px] flex flex-col gap-[10px]">
+    <div className=" h-[60px] flex flex-col gap-[10px]">
       {/* Title */}
       <h2 className="font-roboto font-medium text-lg text-[var(--Heading-black)]">
         Overall Progress

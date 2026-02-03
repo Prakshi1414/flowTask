@@ -41,19 +41,16 @@ function Leftsaid({ isExpanded, setIsExpanded }) {
   // Calculate total selected days
   const totalDays = dateDiffInDays(range?.from, range?.to);
 
-  // Toggle expand/collapse state from parent
-  const toggleExpand = () => {
-    setIsExpanded(!isExpanded); // toggle parent state
-  };
-
   return (
-    <div className={` h-[896px] flex flex-col pr-[10px] pl-[10px] pt-[20px] pb-[20px] gap-[40px] rotate-0 opacity-100 transition-all  border-r-[0.5px] border-r-[rgba(217,217,217,1)] ${isExpanded ? "w-full flex-1" : "w-[634px]"}`}>
+    <div
+      className={`min-h-screen flex flex-col pr-[10px] pl-[10px] pt-[20px] gap-[25px]  transition-all  border-r-[0.5px] border-r-[rgba(217,217,217,1)] ${isExpanded ? "w-full flex-1" : "w-[634px]"}`}
+    >
       {/* Top div */}
-      <div className="w-[614px] h-[424.2px] gap-[65px] rotate-0 opacity-100">
-        <div className="h-[247px] gap-[15px] flex flex-col">
-          <div class="h-[143px] gap-[53px] flex flex-col">
+      <div className="flex flex-col gap-[30px]">
+        <div className="gap-[15px] flex flex-col">
+          <div className=" gap-[53px] flex flex-col">
             {/* top btn */}
-            <div class="w-[176px] flex h-[29px] gap-[26px] rotate-0 opacity-100">
+            <div class=" flex h-[29px] gap-[26px] rotate-0 opacity-100">
               <Btn
                 iconName="mdi-light:share"
                 text="Share"
@@ -63,14 +60,15 @@ function Leftsaid({ isExpanded, setIsExpanded }) {
               />
               <Btn
                 iconName="pepicons-pencil:expand"
-                onClick={toggleExpand}
-                text={isExpanded ? "Collapse" : "Expand"}
+                text="Expand"
+                label={isExpanded ? "Collapse" : "Expand"}
+                onClick={() => setIsExpanded(!isExpanded)}
               />
             </div>
             {/* top title */}
             <div class="h-[61px] flex justify-between ">
               {/* left title */}
-              <div class="w-[309px] h-[60px] flex gap-[5px] p-[5px] bg-white">
+              <div class="h-[60px] flex gap-[5px] p-[5px] bg-white">
                 {/* Logo */}
                 <img
                   src="/images/chatimg.png"
@@ -78,7 +76,7 @@ function Leftsaid({ isExpanded, setIsExpanded }) {
                   className="w-[50px] h-[50px] rounded-full object-covor"
                 />
                 {/* Text */}
-                <div className="w-[215px] h-[38px] flex flex-col leading-[100%]">
+                <div className=" h-[38px] flex flex-col leading-[100%]">
                   <h2 className="h-[21px] font-roboto font-medium text-[18px] tracking-normal text-black">
                     Orion – Website Redesign
                   </h2>
@@ -93,10 +91,10 @@ function Leftsaid({ isExpanded, setIsExpanded }) {
                 />
               </div>
               {/* right title */}
-              <div class="w-[167px] h-[61px] p-[5px] justify-center items-center">
+              <div class="h-[61px] p-[5px] justify-center items-center">
                 <div
                   ref={ref}
-                  class="w-[157px] h-[51px] flex gap-[10px] p-[5px] justify-center relative items-center"
+                  className="h-[51px] flex gap-[10px] p-[5px] justify-center relative items-center"
                 >
                   <button
                     onClick={() => setOpen(!open)}
@@ -154,11 +152,11 @@ function Leftsaid({ isExpanded, setIsExpanded }) {
               </div>
             </div>
           </div>
-          <div className="w-[614px] h-[84px] flex flex-col gap-[15px]">
+          <div className="flex flex-col gap-[15px]">
             <h2 className=" h-[21px] font-roboto font-medium text-lg leading-[100%] tracking-normal text-black">
               Description
             </h2>
-            <p className="w-[604px] h-[48px] font-roboto text-[#616161] font-Regular text-sm leading-[100%] tracking-normal">
+            <p className="h-[48px] font-roboto text-[#616161] font-Regular text-sm leading-[100%] tracking-normal">
               Orion Tech Solutions is undergoing a complete website redesign to
               modernize its digital presence. The goal is to deliver a
               responsive, visually engaging, and conversion-focused website that
@@ -166,11 +164,11 @@ function Leftsaid({ isExpanded, setIsExpanded }) {
             </p>
           </div>
         </div>
-        <div className=" h-[137.2px] flex flex-col mt-[35px] gap-[15px] rotate-0 opacity-100">
+        <div className="flex flex-col gap-[15px] rotate-0 opacity-100">
           <h2 className="h-[21px] font-roboto font-medium text-lg leading-[100%] tracking-normal text-black">
             Team Members
           </h2>
-          <div className="w-[631px] h-[101.2px] flex gap-[17.48px]  flex-wrap ">
+          <div className="h-[101.2px] flex gap-[17.48px] flex-wrap ">
             <AddNewButton
               text="Add New"
               btnClass="w-[104.88px] h-[45.6px] gap-[7.6px] p-[7.6px] rounded-[3.8px] border-[0.38px] border-[rgba(217,217,217,1)] shadow-[0px_0px_21.3px_0px_rgba(0,0,0,0.07)]"
@@ -204,9 +202,9 @@ function Leftsaid({ isExpanded, setIsExpanded }) {
         </div>
       </div>
       {/* bottom div */}
-      <div className="w-[614px] flex flex-col h-[281.07px] gap-[25px]">
-        <div className="h-[196px] flex flex-col p-[5px] gap-[15px]">
-          <h2 className="w-[609] h-[21px] font-roboto font-medium text-lg leading-[100%] tracking-normal text-[var(--Heading-black)]">
+      <div className=" flex flex-col gap-[25px]">
+        <div className=" flex flex-col p-[5px] gap-[15px]">
+          <h2 className=" h-[21px] font-roboto font-medium text-lg leading-[100%] tracking-normal text-[var(--Heading-black)]">
             Objectives
           </h2>
           <div className="h-[150px] flex flex-col gap-[5px] p-[5px] rounded-[5px] border-[0.5px] border-[rgba(235,235,235,1)] bg-white">

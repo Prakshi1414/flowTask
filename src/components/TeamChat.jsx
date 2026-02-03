@@ -34,7 +34,7 @@ const chats = [
   },
 ];
 
-const TeamChat = () => {
+const TeamChat = ({ setOpenChat }) => {
   return (
     <div className="w-[371px] h-[288px] flex flex-col gap-[10px] p-[10px] rounded-[10px] bg-white shadow-[0_0_22.6px_0_rgba(0,0,0,0.07)] opacity-100">
       {/*  conntent box*/}
@@ -55,7 +55,15 @@ const TeamChat = () => {
         {/* bottom List */}
         <div className="w-[351px] h-[207px] flex flex-col gap-[18px] opacity-100">
           {chats.map((chat) => (
-            <div key={chat.id}>
+            <div
+              key={chat.id}
+              onClick={() => {
+                if (chat.id === 1) {
+                  setOpenChat(true);
+                }
+              }}
+              className="cursor-pointer"
+            >
               <div className="w-[351px] h-[38.667px] flex gap-[5px] px-[5px] bg-white border-b-[0.3px] border-b-[rgba(222,222,222,1)]">
                 {/* Avatar */}
                 <img

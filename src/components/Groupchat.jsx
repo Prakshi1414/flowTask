@@ -12,14 +12,14 @@ import {
   CheckCheck,
 } from "lucide-react";
 
-function Groupchat() {
+function Groupchat({setOpenChat}) {
   return (
     <div className="w-[400px] h-[481px] mt-[25px] rotate-0 opacity-100 rounded-[10px] border-[0.5px] border-[rgba(235,235,235,1)]">
       {/* Header */}
       <div className="w-[400px] h-[50px] flex items-center justify-between px-[10px] bg-white rounded-tl-[5px] rounded-tr-[5px]">
         <div className="flex w-[235px] h-[40px] flex gap-[5px]">
           <div className="w-[24px] h-[24px] opacity-100">
-            <ArrowLeft className="w-[16px] h-[16px] mt-[10px] cursor-pointer" />
+            <ArrowLeft className="w-[16px] h-[16px] mt-[10px] cursor-pointer" onClick={() => setOpenChat(false)}/>
           </div>
 
           <img
